@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+      background-color: #f2f2f2; /* Cinza claro */
+    }
+        #container {
+            text-align: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+  <body>
+    <center><h2>JavaScript</h2></center>
+    <center><p>Lucas Henrique Rocha - 224154</p></center>
+    <!-- ex1 -->
+    <h4>Ex1</h4>
+    <p>alert inicial</p>
+    <script>
+        // Definindo as variáveis
+        var valor1 = 10;
+        var valor2 = 100;
+        
+        // Calculando as operações
+        var soma = valor1 + valor2;
+        var subtracao = valor2 - valor1;
+        var divisao = valor2 / valor1;
+        var multiplicacao = valor1 * valor2;
+        
+        // Mostrando os resultados em um alert
+        alert("Soma: " + soma + "\nSubtração: " + subtracao + "\nDivisão: " + divisao + "\nMultiplicação: " + multiplicacao);
+        </script>
+        <hr/>
+    <!-- ex2 -->
+    <h4>Ex2</h4>
+    <div id="container">
+        <button onclick="mostrarNumeros()" class="btn btn-primary">Mostrar Loop</button>
+        <div id="output"></div>
+    </div>
+    
+    <script>
+    function mostrarNumeros() {
+        var outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = ''; // Limpa o conteúdo atual
+    
+        for (var i = 10; i <= 100; i++) {
+            // Cria um elemento de texto para cada número e o adiciona ao div de saída
+            var numeroElemento = document.createElement("span");
+            numeroElemento.textContent = i + " ";
+            outputDiv.appendChild(numeroElemento);
+        }
+    }
+    </script>
+    <hr/>
+    <!-- ex3 --> 
+    <h4>Ex3</h4>
+    <div id="container">
+        <h2>Tabuada do 5</h2>
+        <button id="mostrar-tabuada" class="btn btn-primary">Mostrar Tabuada</button>
+        <div id="tabuada-container" style="margin-top: 20px;"></div>
+      </div>
+    
+      <!-- Adicione o JavaScript -->
+      <script>
+        document.getElementById('mostrar-tabuada').addEventListener('click', function() {
+          var tabuadaContainer = document.getElementById('tabuada-container');
+          var tabuada = '';
+          var numero = 5;
+    
+          for (var i = 1; i <= 10; i++) {
+            tabuada += numero + " x " + i + " = " + (numero * i) + "<br>";
+          }
+    
+          tabuadaContainer.innerHTML = "<h3>Tabuada do 5:</h3>" + tabuada;
+        });
+      </script>
+      <hr/>
+      <!-- ex4 -->
+      <h4>Ex4</h4>
+      <div class="container">
+        <h2>Tabuada Dinâmica</h2>
+        <div class="form-group">
+          <label for="numero">Digite um número:</label>
+          <input type="number" class="form-control" id="numero" placeholder="Digite o número">
+        </div>
+        <button id="mostrar-tabuada1" class="btn btn-primary">Mostrar Tabuada</button>
+      </div>
+    
+      <!-- Adicione o JavaScript -->
+      <script>
+        document.getElementById('mostrar-tabuada1').addEventListener('click', function() {
+          var numero = document.getElementById('numero').value;
+    
+          // Verifica se o valor digitado é válido
+          if (numero !== '') {
+            numero = parseInt(numero);
+            var tabuada = '';
+            var alertText = "Tabuada do " + numero + ":\n";
+    
+            for (var i = 1; i <= 10; i++) {
+              tabuada += numero + " x " + i + " = " + (numero * i) + "\n";
+              alertText += numero + " x " + i + " = " + (numero * i) + "\n";
+            }
+    
+            alert(alertText);
+          } else {
+            alert("Por favor, digite um número válido.");
+          }
+        });
+      </script>
+      <hr/>
+      <!-- ex5 -->
+      <h4>Ex5</h4>
+      <div class="container">
+        <h2>Calculadora</h2>
+        <div class="form-group">
+          <label for="valor1">Valor 1:</label>
+          <input type="number" class="form-control" id="valor1" placeholder="Digite o primeiro valor">
+        </div>
+        <div class="form-group">
+          <label for="valor2">Valor 2:</label>
+          <input type="number" class="form-control" id="valor2" placeholder="Digite o segundo valor">
+        </div>
+        <div class="form-group">
+          <label for="operacao">Operação:</label>
+          <select class="form-control" id="operacao">
+            <option value="+">Soma (+)</option>
+            <option value="-">Subtração (-)</option>
+            <option value="*">Multiplicação (*)</option>
+            <option value="/">Divisão (/)</option>
+          </select>
+        </div>
+        <button id="calcular" class="btn btn-primary">Calcular</button>
+        <div id="resultado" style="margin-top: 20px;"></div>
+      </div>
+      <hr/>
+      <!-- Adicione o JavaScript -->
+      <script>
+        document.getElementById('calcular').addEventListener('click', function() {
+          var valor1 = parseFloat(document.getElementById('valor1').value);
+          var valor2 = parseFloat(document.getElementById('valor2').value);
+          var operacao = document.getElementById('operacao').value;
+          var resultado;
+    
+          switch (operacao) {
+            case '+':
+              resultado = valor1 + valor2;
+              break;
+            case '-':
+              resultado = valor1 - valor2;
+              break;
+            case '*':
+              resultado = valor1 * valor2;
+              break;
+            case '/':
+              if (valor2 !== 0) {
+                resultado = valor1 / valor2;
+              } else {
+                resultado = "Erro: divisão por zero";
+              }
+              break;
+            default:
+              resultado = "Operação inválida";
+              break;
+          }
+    
+          document.getElementById('resultado').innerHTML = "<h3>Resultado:</h3><p>" + resultado + "</p>";
+        });
+      </script>
+      <hr/>
+      <!-- ex6 -->
+      <h4>Ex6</h4>
+      <div class="container">
+        <h2>Valores Pares</h2>
+        <p>array [1,2,3,4,5,6,7,8,9,10]</p>
+        <button id="exibir-pares" class="btn btn-primary">Exibir Pares</button>
+      </div>
+    
+      <!-- Adicione o JavaScript -->
+      <script>
+        document.getElementById('exibir-pares').addEventListener('click', function() {
+          var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+          var pares = [];
+    
+          for (var i = 0; i < array.length; i++) {
+            if (array[i] % 2 === 0) {
+              pares.push(array[i]);
+            }
+          }
+    
+          if (pares.length > 0) {
+            alert("Valores pares: " + pares.join(', '));
+          } else {
+            alert("Nenhum valor par encontrado.");
+          }
+        });
+      </script>
+      <hr/>
+      <!-- ex7 -->
+      <h4>Ex7</h4>
+      <div class="container">
+        <h2>Calculadora de Custo de Carro</h2>
+        <form id="carroForm">
+          <div class="form-group">
+            <label for="custoFabrica">Custo de Fábrica:</label>
+            <input type="number" class="form-control" id="custoFabrica" name="custoFabrica" placeholder="Digite o custo de fábrica">
+          </div>
+          <div class="form-group">
+            <label for="percDistribuidor">Percentual do Distribuidor (%):</label>
+            <input type="number" class="form-control" id="percDistribuidor" name="percDistribuidor" placeholder="Digite o percentual do distribuidor">
+          </div>
+          <div class="form-group">
+            <label for="percImpostos">Percentual de Impostos (%):</label>
+            <input type="number" class="form-control" id="percImpostos" name="percImpostos" placeholder="Digite o percentual de impostos">
+          </div>
+          <div class="form-group">
+            <label for="valorFinal">Valor Final:</label>
+            <input type="text" class="form-control" id="valorFinal" name="valorFinal" readonly>
+          </div>
+          <button type="button" id="calcular1" class="btn btn-primary">Calcular</button>
+        </form>
+      </div>
+    
+      <!-- Adicione o JavaScript -->
+      <script>
+        document.getElementById('calcular1').addEventListener('click', function() {
+          var custoFabrica = parseFloat(document.getElementById('custoFabrica').value);
+          var percDistribuidor = parseFloat(document.getElementById('percDistribuidor').value);
+          var percImpostos = parseFloat(document.getElementById('percImpostos').value);
+    
+          if (!isNaN(custoFabrica) && !isNaN(percDistribuidor) && !isNaN(percImpostos)) {
+            var custoFinal = custoFabrica + (custoFabrica * percDistribuidor / 100) + (custoFabrica * percImpostos / 100);
+            document.getElementById('valorFinal').value = custoFinal.toFixed(2);
+          } else {
+            alert("Por favor, preencha todos os campos com valores numéricos.");
+          }
+        });
+      </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
